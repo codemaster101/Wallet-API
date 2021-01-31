@@ -1,0 +1,50 @@
+{
+  "name": "bitcoin-api",
+  "version": "0.0.5",
+  "description": "Wallet Generation API for Bitcoin.",
+  "author": "Shivam Tiwari",
+  "private": true,
+  "types": "./built/index.d.ts",
+  "main": "./built/index.js",
+  "scripts": {
+    "start": "node ./built/index.js",
+    "build": "tsc && node ./increase-built.js",
+    "doc": "typedoc",
+    "test": "mocha -r ts-node/register tests/\\*\\*/\\*.spec.ts",
+    "hexlint": "eslint --config .eslintrc.json --ignore-path .eslintignore ./src/**/*.ts",
+    "hexfix": "eslint --config .eslintrc.json --fix --ignore-path .eslintignore ./src/**/*.ts",
+    "gendoc": "swagger-jsdoc -d swagger/swagger.js src/routers/**/*.ts -o swagger/swagger.json"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/express": "^4.17.2",
+    "@types/express-serve-static-core": "^4.16.11",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.43",
+    "@types/redis": "^2.8.15",
+    "@types/uuid": "^3.4.6",
+    "@types/validator": "^10.11.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "mocha": "^6.2.3",
+    "swagger-jsdoc": "^6.0.2",
+    "ts-node": "^8.10.2",
+    "typedoc": "^0.15.8",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/hdkey": "^0.7.1",
+    "bignumber.js": "^9.0.1",
+    "bitcoinjs-lib": "^5.2.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-serve-static-core": "^0.1.1",
+    "hdkey": "^2.0.1"
+  }
+}

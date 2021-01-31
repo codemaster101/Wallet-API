@@ -1,0 +1,121 @@
+{
+  "info": {
+    "title": "Wallet API",
+    "version": "1.0.0",
+    "description": "A Service that helps in generation of Bitcoin Addresses"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Check if the server is running smoothly",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "health": {
+                      "type": "string",
+                      "description": "Returns OK if the server is running smoothly."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/segwit": {
+      "post": {
+        "summary": "Create a segwit address from a given HD path and a seed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "seed": {
+                    "type": "string"
+                  },
+                  "hdPath": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string",
+                      "description": "Returns a segwit address as a string."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/multisig": {
+      "post": {
+        "summary": "Create a m-out-of-n multisig address given conditions m, n and public keys",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "m": {
+                    "type": "number"
+                  },
+                  "n": {
+                    "type": "number"
+                  },
+                  "publicKeys": {
+                    "type": "string",
+                    "description": "Public Keys should be separated by a comma."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string",
+                      "description": "Returns a multisig address as a string."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
