@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 import cluster from 'cluster';
-import express, { Express } from 'express';
-import * as bodyParser from 'body-parser';
+import * as express from 'express';
 import * as dotenv from 'dotenv';
 import RouterApi from './routers/router-api';
+
+const expressFramework = require('express');
 
 dotenv.config();
 
@@ -34,11 +35,9 @@ if (cluster.isMaster) {
   console.log(`Child worker PID: ${process.pid} started`);
 
   // Load singleton express
-  const app: Express = express();
-  // @ts-ignore
-  app.use(bodyParser.urlencoded({ extended: true }));
-  // @ts-ignore
-  app.use(bodyParser.json());
+  const app = expressFramework();
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
 
   app.use('/api', RouterApi);
 

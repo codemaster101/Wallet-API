@@ -22,7 +22,8 @@ const RouterV1: express.Router = express.Router();
   *                   description: Returns OK if the server is running smoothly.
   */
 RouterV1.get('/health', (req, res) => {
-  res.send(serviceAddress.healthCheck(req, res));
+  console.log('Incoming GET request to api/v1/health');
+  return serviceAddress.healthCheck(req, res);
 });
 
 /**
@@ -54,7 +55,8 @@ RouterV1.get('/health', (req, res) => {
   *                   description: Returns a segwit address as a string.
   */
 RouterV1.post('/segwit', (req, res) => {
-  res.send(serviceAddress.generateSegwitAddress(req, res));
+  console.log('Incoming POST request to api/v1/segwit');
+  return serviceAddress.generateSegwitAddress(req, res);
 });
 
 /**
@@ -89,7 +91,8 @@ RouterV1.post('/segwit', (req, res) => {
   *                   description: Returns a multisig address as a string.
   */
 RouterV1.post('/multisig', (req, res) => {
-  res.send(serviceAddress.generateMultiSigAddress(req, res));
+  console.log('Incoming POST request to api/v1/multisig');
+  return serviceAddress.generateMultiSigAddress(req, res);
 });
 
 export default RouterV1;

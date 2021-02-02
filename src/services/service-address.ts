@@ -38,7 +38,7 @@ class Service {
         pubkey: publicKey,
       });
 
-      return res.send(200).json({
+      return res.status(200).json({
         address,
       });
     }
@@ -47,16 +47,16 @@ class Service {
 
   public async generateMultiSigAddress(req: core.Request, res: core.Response) {
     const {
-      m, n, addresses,
-    }: { m: number, n: number, addresses: string } = req.body;
+      m, n, publicKeys,
+    }: { m: number, n: number, publicKeys: string } = req.body;
 
-    const publicKeys = addresses.split(',');
+    const publicKeysArray = publicKeys.split(',');
 
-    if (n !== publicKeys.length) {
+    if (n !== publicKeysArray.length) {
       throw new Error('Value mismatch. The value of \'n\' does not match the number of public keys provided.');
     }
 
-    const bufPublicKeys = publicKeys.map((hexPubKey) => Buffer.from(hexPubKey, 'hex'));
+    const bufPublicKeys = publicKeysArray.map((hexPubKey) => Buffer.from(hexPubKey, 'hex'));
 
     const { address } = bitcoin.payments.p2sh({
       redeem: bitcoin.payments.p2ms({
@@ -64,7 +64,7 @@ class Service {
       }),
     });
 
-    return res.send(200).json({
+    return res.status(200).json({
       address,
     });
   }
