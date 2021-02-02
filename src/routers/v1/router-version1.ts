@@ -77,7 +77,7 @@ RouterV1.post('/segwit', (req, res) => {
   *                 type: number
   *               publicKeys:
   *                 type: string
-  *                 description: Public Keys should be separated by a comma.
+  *                 description: Public Keys (compressed) should be separated by a comma.
   *     responses:
   *       '200':
   *         description: OK
