@@ -22,8 +22,8 @@ Else, run:
 
 **`npm start`**
 
-General notes:
-1. A swagger file is provided, please use that as an API reference.
+### General notes:
+1. A **swagger file** (*./swagger/swagger.json*) is provided, please use that as an **API reference**.
 2. This API is built on REST.
 3. Public Keys are expected to be compressed. Support for providing uncompressed public keys can be added on request.
  
