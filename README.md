@@ -3,6 +3,8 @@
 ### Important notes:
 For security, all seeds, private keys and public keys are assumed to be in Buffer format. But for ease of testing the developer will be able to provide the seeds and keys as a string. However, this is not recommended!
 
+This documentation assumes that you have a working version of Nodejs and NPM. 
+
 ### How to use:
 If you want any configurations to be done for the server, please edit the example.env file:
 
