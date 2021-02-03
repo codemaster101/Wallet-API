@@ -29,3 +29,20 @@ Else, run:
 2. This API is built on REST.
 3. Public Keys are expected to be compressed. Support for providing uncompressed public keys can be added on request.
  
+### API Quick Reference
+#### Examples
+**Health Check of the Server**\
+localhost:3000/api/v1/health
+
+**Segwit Address Generator**\
+localhost:3000/api/v1/segwit\
+Request Body: *seed, hdPath*\
+Seed: Seed to be used to reconstruct the segwit address.\
+hdPath: Hierarchical Deterministic path for Bitcoin.
+
+**Multisig Address Generator**\
+localhost:3000/api/v1/multisig\
+Request Body: *m, n, publicKeys*\
+m: number of signatures required for the multisig address.\
+n: number of public keys from which the address will be constructed from. (m < n)\
+publicKeys: n Compressed Public Keys separated by a comma (***,***).\
